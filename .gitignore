@@ -1,0 +1,14 @@
+# Ignorar todo por defecto...
+*
+# ...salvo las carpetas (para poder entrar en ellas),
+!*/
+# los scripts SQL
+!*.sql
+# y este propio archivo.
+!.gitignore
+
+# Exclusiones explícitas (ya cubiertas por la regla "*", se dejan por claridad)
+*.db
+*.sqlite
+*.pptx
+*.zip
