@@ -1,19 +1,9 @@
--- Práctica 2 - Ejercicio 1 (base: moviebig.db, tabla movies)
--- Películas consideradas un fracaso: lanzadas (status = 'Released') y cuyos
--- beneficios (revenue) no superan el presupuesto (budget).
---
--- Interpretación:
---   * "No llegaron a ser superiores" => revenue <= budget (se incluye el empate).
---   * En esta tabla un 0 en budget o revenue significa dato no registrado,
---     así que se excluyen esas películas para no contar como fracaso
---     una película de la que no se conocen las cifras.
+-- Ejercicio 1: películas que fueron un fracaso
+-- Quito las que tienen 0 en budget o revenue porque es que no tienen el dato
 
-SELECT title   AS nombre,
-       revenue AS beneficios,
-       budget  AS presupuesto
+SELECT title, revenue, budget
 FROM movies
 WHERE status = 'Released'
-  AND budget > 0
-  AND revenue > 0
-  AND revenue <= budget
-ORDER BY title;
+AND revenue <= budget
+AND budget > 0
+AND revenue > 0;

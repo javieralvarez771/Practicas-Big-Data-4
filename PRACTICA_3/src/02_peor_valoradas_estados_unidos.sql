@@ -1,20 +1,9 @@
--- Práctica 3 - Ejercicio 2 (base: moviebig.db, tabla movies)
--- Películas producidas en Estados Unidos con valoración promedio menor o igual a 5,
--- ordenadas de mayor a menor cantidad de votos.
---
--- Interpretación:
---   * "Menor o igual a 5" => vote_average <= 5 (un 5 exacto sí entra).
---   * Las películas con vote_count = 0 tienen vote_average = 0 porque nadie las ha
---     votado: su valoración es desconocida, no mala, así que se excluyen.
+-- Ejercicio 2: películas de Estados Unidos con nota menor o igual a 5
+-- Quito las que tienen 0 votos porque nadie las ha votado
 
-SELECT id,
-       title                AS titulo,
-       popularity           AS popularidad,
-       vote_average         AS promedio_votacion,
-       vote_count           AS cantidad_votos,
-       production_countries AS pais_produccion
+SELECT id, title, popularity, vote_average, vote_count, production_countries
 FROM movies
 WHERE production_countries LIKE '%United States%'
-  AND vote_average <= 5
-  AND vote_count > 0
+AND vote_average <= 5
+AND vote_count > 0
 ORDER BY vote_count DESC;

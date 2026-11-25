@@ -1,18 +1,7 @@
--- Práctica 3 - Ejercicio 1 (base: moviebig.db, tabla movies)
--- Películas producidas en Estados Unidos, ordenadas de mayor a menor popularidad.
---
--- Notas:
---   * En esta base el identificador se llama "id" (no "movie_id" como en las diapositivas).
---   * production_countries es un texto JSON con los países, por ejemplo:
---     [{"iso_3166_1": "US", "name": "United States of America"}],
---     por eso se busca el texto "United States" con LIKE.
+-- Ejercicio 1: películas de Estados Unidos ordenadas por popularidad
+-- En esta tabla el id se llama id y no movie_id
 
-SELECT id,
-       title                AS titulo,
-       popularity           AS popularidad,
-       vote_average         AS promedio_votacion,
-       release_date         AS fecha_estreno,
-       production_countries AS pais_produccion
+SELECT id, title, popularity, vote_average, release_date, production_countries
 FROM movies
 WHERE production_countries LIKE '%United States%'
 ORDER BY popularity DESC;
